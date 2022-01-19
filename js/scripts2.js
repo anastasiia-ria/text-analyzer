@@ -17,8 +17,10 @@ function pigLatin(word) {
   if (firstConsonant && secondConsonant) {
     array.push(array.shift());
     array.push(array.shift());
+    array.push("ay");
   } else if (firstConsonant) {
     array.push(array.shift());
+    array.push("ay");
   }
 
   word = array.join("");
