@@ -1,7 +1,18 @@
+// Utility Logic
+
+function noInputtedWord() {
+  for (let i=0; i < arguments.length; i++) {
+    if (arguments[i].trim().length === 0) {
+      return true;
+    }
+  }
+  return false;
+}
+
 // Business Logic
 
 function wordCounter(text) {
-  if (text.trim().length === 0) {
+  if (noInputtedWord(text)) {
     return 0;
   }
   let wordCount = 0;
@@ -15,7 +26,7 @@ function wordCounter(text) {
 }
 
 function numberOfOccurrencesInText(word, text) {
-  if ((text.trim().length === 0 || (word.trim().length === 0))) {
+  if (noInputtedWord(word, text)) {
     return 0;
   }
   const wordArray = text.split(" ");
@@ -29,6 +40,9 @@ function numberOfOccurrencesInText(word, text) {
 }
 
 function boldPassage(word, text) {
+  if (noInputtedWord(word, text)) {
+    return "";
+  }
   let htmlString = "<p>";
   let textArray = text.split(" ");
   textArray.forEach(function(element, index) {
@@ -51,12 +65,14 @@ function unique (item, index, inputArray ) {
 function removeOffensiveWords (text) {
   const offensiveWords = ["zoinks", "muppeteer", "biffaroni", "loopdaloop"];
   offensiveWords.forEach(function(offensiveWord) {
-    if (text.toLowerCase().includes(offensiveWord)) {
+    while (text.toLowerCase().includes(offensiveWord)) {
       text = text.toLowerCase().replace(" " + offensiveWord, "");
       text = text.toLowerCase().replace(offensiveWord + " ", "");
       text = text.toLowerCase().replace(offensiveWord, "");
     }
   });
+  text = text.trim();
+  console.log(text);
   return text;
 }
 
@@ -64,19 +80,21 @@ function removeOffensiveWords (text) {
 $(document).ready(function(){
   $("form#word-counter").submit(function(event){
     event.preventDefault();
+    $('ul#count-list').empty();
+    
     const passage = $("#text-passage").val();
+    const nicePassage = removeOffensiveWords(passage);
     const word = $("#word").val();
-    const wordCount = wordCounter(passage);
-    const occurrencesOfWord = numberOfOccurrencesInText(word, passage);
+    const wordCount = wordCounter(nicePassage);
+    const occurrencesOfWord = numberOfOccurrencesInText(word, nicePassage);
 
     let multiDimArray = [];
-    const wordArray = passage.toLowerCase().split(" ");
+    const wordArray = nicePassage.toLowerCase().split(" ");
     let uniqueArray = wordArray.filter(unique);
-
+    
     uniqueArray.forEach(function(word) {
-      multiDimArray.push([numberOfOccurrencesInText(word, passage), word]);
+      multiDimArray.push([numberOfOccurrencesInText(word, nicePassage), word]);
     });
-
     $("#total-count").html(wordCount);
     $("#selected-count").html(occurrencesOfWord);
     multiDimArray.sort().reverse().slice(0,3).forEach(function(obj) {

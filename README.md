@@ -157,6 +157,32 @@ Code:
 const text = "zoinks hello world Biffaroni";
 removeOffensiveWords(text);
 Expected Output: hello world
+
+Describe: pigLatin()
+
+Test: "It will add 'way' to the end of words that begin with a vowel."
+Code: pigLatin("a");
+Expected Output: "away"
+
+Test: "It will move first consonant to the end of word if the word begins with a consonant."
+Code: pigLatin("qa");
+Expected Output: "aq"
+
+Test: "It will move first consequtive consonants to the end of word if the word begins with a consonant."
+Code: pigLatin("sra");
+Expected Output: "asr"
+
+Test: "It will move first consequtive consonants and add 'ay' to the end of word if the word begins with a consonant."
+Code: pigLatin("code");
+Expected Output: "odecay"
+
+Test: "It will move 'qu' and add 'ay' to the end of word if the word begins with with 'qu.'"
+Code: pigLatin("quick");
+Expected Output: "ickquay"
+
+Test: "It will not move 'qu', it will move first consonant only and add 'ay' to the end of word if the word begins with with consonant + 'qu.'"
+Code: pigLatin("squeal");
+Expected Output: "quealsay"
 ## Known Bugs
 
 * _Any known issues_
