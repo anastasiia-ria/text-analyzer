@@ -151,6 +151,12 @@ Code:
 const text = "zoinks hello world Biffaroni";
 removeOffensiveWords(text);
 Expected Output: zoinks Biffaroni
+
+Test: "It should return text without offensive words"
+Code: 
+const text = "zoinks hello world Biffaroni";
+removeOffensiveWords(text);
+Expected Output: hello world
 ## Known Bugs
 
 * _Any known issues_
