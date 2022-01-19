@@ -2,16 +2,22 @@
 function pigLatin(word) {
   const array = word.split('');
   const vowels = ["a", "e", "i", "o", "u"];
-  let consonant = true;
+  let firstConsonant = true;
+  let secondConsonant = true;
 
   vowels.forEach(function(vowel) {
     if (array[0] === vowel) {
       array.push("way");
-      consonant = false;
-    } 
+      firstConsonant = false;
+    } else if (array[1] === vowel) {
+      secondConsonant = false;
+    }
   });
 
-  if (consonant) {
+  if (firstConsonant && secondConsonant) {
+    array.push(array.shift());
+    array.push(array.shift());
+  } else if (firstConsonant) {
     array.push(array.shift());
   }
 
