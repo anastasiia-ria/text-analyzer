@@ -176,6 +176,10 @@ Test: "It will recongnize vowels regardless of case."
 Code: pigLatin("Orange");
 Expected Output: "Orangeway"
 
+Test: "It will recongnize consonants regardless of case."
+Code: pigLatin("Bug");
+Expected Output: "ugB"
+
 Test: "It will move first consequtive consonants and add 'ay' to the end of word if the word begins with a consonant."
 Code: pigLatin("code");
 Expected Output: "odecay"
