@@ -145,6 +145,12 @@ Code:
 const text = "zoinks hello world";
 removeOffensiveWords(text);
 Expected Output: zoinks
+
+Test: "It should return offensive words if the text contains them even if it has capital letter"
+Code: 
+const text = "zoinks hello world Biffaroni";
+removeOffensiveWords(text);
+Expected Output: zoinks Biffaroni
 ## Known Bugs
 
 * _Any known issues_

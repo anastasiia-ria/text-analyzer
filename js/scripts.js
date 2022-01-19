@@ -48,10 +48,10 @@ function unique (item, index, inputArray ) {
   return inputArray.indexOf(item) === index;
 }
 
-function removeOffensiveWords (word) {
+function removeOffensiveWords (text) {
   const offensiveWords = ["zoinks", "muppeteer", "biffaroni", "loopdaloop"];
   offensiveWords.forEach(function(offensiveWord) {
-    if (word.includes(offensiveWord)) {
+    if (text.toLowerCase().includes(offensiveWord)) {
       console.log(offensiveWord);
     }
   });
