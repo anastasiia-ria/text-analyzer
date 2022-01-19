@@ -18,6 +18,9 @@ function pigLatin(word) {
     array.push(array.shift());
     array.push(array.shift());
     array.push("ay");
+  } else if (firstConsonant && array[1] === "q" && array[2] === "u") {
+    array.push(array.shift());
+    array.push("ay");
   } else if (firstConsonant && secondConsonant) {
     array.push(array.shift());
     array.push(array.shift());
@@ -26,8 +29,6 @@ function pigLatin(word) {
     array.push(array.shift());
     array.push("ay");
   }
-
- 
 
   word = array.join("");
   console.log(word);
