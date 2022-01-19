@@ -128,6 +128,12 @@ const text = "hello there";
 boldPassage(word, text);
 Expected Output: "<p><b>hello</b> there</p>"
 
+Describe: removeOffensiveWords()
+
+Test: "It should return 0 for an empty string."
+Code: removeOffensiveWords("");
+Expected Output: 0
+
 ## Known Bugs
 
 * _Any known issues_

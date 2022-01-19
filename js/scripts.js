@@ -44,6 +44,16 @@ function boldPassage(word, text) {
   return htmlString + "</p>";
 }
 
+function unique (item, index, inputArray ) {
+  return inputArray.indexOf(item) === index;
+}
+
+function removeOffensiveWords (word) {
+  if (word === "") {
+    return 0;
+  }
+}
+
 // UI Logic
 $(document).ready(function(){
   $("form#word-counter").submit(function(event){
@@ -52,8 +62,20 @@ $(document).ready(function(){
     const word = $("#word").val();
     const wordCount = wordCounter(passage);
     const occurrencesOfWord = numberOfOccurrencesInText(word, passage);
+
+    let multiDimArray = [];
+    const wordArray = passage.toLowerCase().split(" ");
+    let uniqueArray = wordArray.filter(unique);
+
+    uniqueArray.forEach(function(word) {
+      multiDimArray.push([numberOfOccurrencesInText(word, passage), word]);
+    });
+
     $("#total-count").html(wordCount);
     $("#selected-count").html(occurrencesOfWord);
+    multiDimArray.sort().reverse().slice(0,3).forEach(function(obj) {
+      $('ul#count-list').append('<li>' + obj[0] + ": " + obj[1] + '</li>');
+    });
   });
 });
 
