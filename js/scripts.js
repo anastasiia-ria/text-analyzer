@@ -52,9 +52,12 @@ function removeOffensiveWords (text) {
   const offensiveWords = ["zoinks", "muppeteer", "biffaroni", "loopdaloop"];
   offensiveWords.forEach(function(offensiveWord) {
     if (text.toLowerCase().includes(offensiveWord)) {
-      console.log(offensiveWord);
+      text = text.toLowerCase().replace(" " + offensiveWord, "");
+      text = text.toLowerCase().replace(offensiveWord + " ", "");
+      text = text.toLowerCase().replace(offensiveWord, "");
     }
   });
+  return text;
 }
 
 // UI Logic
