@@ -134,10 +134,16 @@ Test: "It should return 0 for an empty string."
 Code: removeOffensiveWords("");
 Expected Output: 0
 
-Test: "It should return 0 if the word is within the array of offensive words"
+Test: "It should return word if the word is within the array of offensive words"
 Code: 
 const word = "zoinks";
 removeOffensiveWords(word);
+Expected Output: zoinks
+
+Test: "It should return offensive word if the text contains it"
+Code: 
+const text = "zoinks hello world";
+removeOffensiveWords(text);
 Expected Output: zoinks
 ## Known Bugs
 
