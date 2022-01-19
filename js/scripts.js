@@ -49,9 +49,12 @@ function unique (item, index, inputArray ) {
 }
 
 function removeOffensiveWords (word) {
-  if (word === "") {
-    return 0;
-  }
+  const offensiveWords = ["zoinks", "muppeteer", "biffaroni", "loopdaloop"];
+  offensiveWords.forEach(function(offensiveWord) {
+    if (word === offensiveWord) {
+      console.log(word);
+    }
+  });
 }
 
 // UI Logic
