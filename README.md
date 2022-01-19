@@ -172,6 +172,10 @@ Test: "It will move first consequtive consonants to the end of word if the word 
 Code: pigLatin("sra");
 Expected Output: "asr"
 
+Test: "It will recongnize vowels regardless of case."
+Code: pigLatin("Orange");
+Expected Output: "Orangeway"
+
 Test: "It will move first consequtive consonants and add 'ay' to the end of word if the word begins with a consonant."
 Code: pigLatin("code");
 Expected Output: "odecay"

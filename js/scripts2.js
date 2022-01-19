@@ -1,7 +1,7 @@
 // Business Logic
 function pigLatin(word) {
   const array = word.split('');
-  const vowels = ["a", "e", "i", "o", "u"];
+  const vowels = ["a", "e", "i", "o", "u", "A", "E", "I", "O", "U"];
   let firstConsonant = true;
   let secondConsonant = true;
 
